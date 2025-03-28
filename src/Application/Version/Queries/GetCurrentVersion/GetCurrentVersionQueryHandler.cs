@@ -1,4 +1,4 @@
-﻿using Domain.Repositories;
+﻿using SolutionNamePlaceholder.Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Version.Queries.GetCurrentVersion
+namespace SolutionNamePlaceholder.Application.Version.Queries.GetCurrentVersion
 {
     public class GetCurrentVersionQueryHandler(
         ILogger<GetCurrentVersionQueryHandler> logger,

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Extensions
+namespace SolutionNamePlaceholder.Application.Extensions
 {
     public static class ServiceCollectionExtensions
     {

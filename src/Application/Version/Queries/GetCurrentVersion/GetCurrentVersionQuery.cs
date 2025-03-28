@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Version.Queries.GetCurrentVersion
+namespace SolutionNamePlaceholder.Application.Version.Queries.GetCurrentVersion
 {
     public class GetCurrentVersionQuery : IRequest<string>
     {

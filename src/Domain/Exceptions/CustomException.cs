@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Exceptions
+namespace SolutionNamePlaceholder.Domain.Exceptions
 {
     public class CustomException(string message, int statusCode) : Exception(message)
     {

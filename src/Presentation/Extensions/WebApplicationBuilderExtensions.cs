@@ -1,8 +1,8 @@
 ﻿using Microsoft.OpenApi.Models;
-using Presentation.Middlewares;
+using SolutionNamePlaceholder.Presentation.Middlewares;
 using Serilog;
 
-namespace Presentation.Extensions
+namespace SolutionNamePlaceholder.Presentation.Extensions
 {
     public static class WebApplicationBuilderExtensions
     {

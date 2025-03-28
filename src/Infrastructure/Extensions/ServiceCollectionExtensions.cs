@@ -1,16 +1,16 @@
-﻿using Domain.Repositories;
-using Infrastructure.Repositories;
+﻿using SolutionNamePlaceholder.Domain.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SolutionNamePlaceholder.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Extensions
+namespace SolutionNamePlaceholder.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {

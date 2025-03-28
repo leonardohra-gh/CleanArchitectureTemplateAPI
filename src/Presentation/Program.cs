@@ -1,7 +1,7 @@
-using Application.Extensions;
-using Infrastructure.Extensions;
-using Presentation.Extensions;
-using Presentation.Middlewares;
+using SolutionNamePlaceholder.Application.Extensions;
+using SolutionNamePlaceholder.Infrastructure.Extensions;
+using SolutionNamePlaceholder.Presentation.Extensions;
+using SolutionNamePlaceholder.Presentation.Middlewares;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

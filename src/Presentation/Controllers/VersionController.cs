@@ -1,9 +1,9 @@
-﻿using Application.Version.Queries.GetCurrentVersion;
+﻿using SolutionNamePlaceholder.Application.Version.Queries.GetCurrentVersion;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Presentation.Controllers
+namespace SolutionNamePlaceholder.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

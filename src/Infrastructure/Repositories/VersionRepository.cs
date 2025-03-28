@@ -1,11 +1,11 @@
-﻿using Domain.Repositories;
+﻿using SolutionNamePlaceholder.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Repositories
+namespace SolutionNamePlaceholder.Infrastructure.Repositories
 {
     public class VersionRepository : IVersionRepository
     {

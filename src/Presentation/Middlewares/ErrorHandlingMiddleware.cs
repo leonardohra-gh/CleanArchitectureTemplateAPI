@@ -1,7 +1,7 @@
-﻿using Domain.Exceptions;
+﻿using SolutionNamePlaceholder.Domain.Exceptions;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace Presentation.Middlewares
+namespace SolutionNamePlaceholder.Presentation.Middlewares
 {
     public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : IMiddleware
     {

@@ -35,9 +35,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "https", "https", "{82649E26-EDAD-47B1-8B8E-9F12ABF1777E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".template.config", ".template.config", "{3EE938AD-0E82-484E-B519-2019DB732182}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".template.config", ".template.config", "{97A5CF4E-392E-4174-BB57-F96BF31F47C9}"
 	ProjectSection(SolutionItems) = preProject
-		template.json = template.json
+		.template.config\template.json = .template.config\template.json
 	EndProjectSection
 EndProject
 Global
@@ -92,7 +92,7 @@ Global
 		{A6333505-0AC4-4938-A039-812C1B547D20} = {4AE48BAC-B2CB-49F9-8B43-59686964DC60}
 		{999DF982-B944-47CC-8EB8-FCC8EC45020C} = {4AE48BAC-B2CB-49F9-8B43-59686964DC60}
 		{82649E26-EDAD-47B1-8B8E-9F12ABF1777E} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
-		{3EE938AD-0E82-484E-B519-2019DB732182} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{97A5CF4E-392E-4174-BB57-F96BF31F47C9} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2C60146-244B-4E2E-B7F6-BDA85B46C3C8}
