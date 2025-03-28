@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Application.Version.Queries.GetCurrentVersion;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VersionController : ControllerBase
+    public class VersionController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public IActionResult GetVersion()
+        public async Task<IActionResult> GetVersion()
         {
-            var version = "0.0.1";
+            var version = await mediator.Send(new GetCurrentVersionQuery());
             return Ok(new { Version = version });
         }
     }
