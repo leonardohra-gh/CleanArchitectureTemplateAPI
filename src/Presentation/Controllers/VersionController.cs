@@ -1,19 +1,23 @@
-﻿using SolutionNamePlaceholder.Application.Version.Queries.GetCurrentVersion;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SolutionNamePlaceholder.Application.Interfaces;
+using SolutionNamePlaceholder.Application.Services.Versao;
 
 namespace SolutionNamePlaceholder.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VersionController(IMediator mediator) : ControllerBase
+    public class VersionController(IVersionService service) : ControllerBase
     {
+        /// <summary>
+        /// Retorna a versão atual da API
+        /// </summary>
+        /// <response code="200">Retorna o valor atual da versão</response>
         [HttpGet]
-        public async Task<IActionResult> GetVersion()
+        [ProducesResponseType(typeof(VersaoDTO), 200)]
+        public IActionResult GetVersion()
         {
-            var version = await mediator.Send(new GetCurrentVersionQuery());
-            return Ok(new { Version = version });
+            var versao = service.FullVersion;
+            return Ok(versao);
         }
     }
 }

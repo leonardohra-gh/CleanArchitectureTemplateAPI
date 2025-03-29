@@ -1,9 +1,7 @@
-﻿using SolutionNamePlaceholder.Domain.Repositories;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SolutionNamePlaceholder.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +15,6 @@ namespace SolutionNamePlaceholder.Infrastructure.Extensions
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("Database");
-
-            services.AddScoped<IVersionRepository, VersionRepository>();
         }
     }
 }

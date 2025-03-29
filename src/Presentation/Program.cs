@@ -20,10 +20,19 @@ var app = builder.Build();
 app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseSerilogRequestLogging();
 
-if (app.Environment.IsDevelopment() || true)
+// Defina se você quer usar o swagger UI ou não.
+var shouldShowSwagger = true; // app.Environment.IsDevelopment()
+if (shouldShowSwagger)
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+        c.DocumentTitle = $"{app.Environment.ApplicationName} - Swagger";
+        c.DisplayRequestDuration();
+        c.EnableDeepLinking(); 
+        c.DefaultModelsExpandDepth(-1);
+    });
 }
 
 app.UseHttpsRedirection();

@@ -2,3 +2,4 @@ Coisas necessárias para alterar:
 
 - A connectionString em appsettings
 - O nome da connectionString o Infrastructure/Extensions/AddInsfrastructure
+- Em Presentation/WebApplicationBuilderExtensions.cs toda a parte do SwaggerDoc
