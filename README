@@ -3,3 +3,10 @@ Coisas necessárias para alterar:
 - A connectionString em appsettings
 - O nome da connectionString o Infrastructure/Extensions/AddInsfrastructure
 - Em Presentation/WebApplicationBuilderExtensions.cs toda a parte do SwaggerDoc
+
+
+Para instalar o template:
+dotnet new --install path/to/Template
+
+Para rodar o template:
+dotnet new clean-arch --ProjectName NomeDoProjeto -n NomeDoProjeto
