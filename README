@@ -6,7 +6,7 @@ Coisas necessárias para alterar:
 
 
 Para instalar o template:
-dotnet new --install path/to/Template
+dotnet new install path/to/Template
 
 Para rodar o template:
-dotnet new clean-arch --ProjectName NomeDoProjeto -n NomeDoProjeto
+dotnet new clean-arch-api --ProjectName NomeDoProjeto -n NomeDoProjeto
