@@ -17,7 +17,6 @@
         "**/[Bb]in/",
         "**/[Oo]bj/",
         ".git/**", 
-        ".gitignore", 
         ".gitattributes", 
         ".gitmodules"
       ]

@@ -3,6 +3,7 @@ using SolutionNamePlaceholder.Infrastructure.Extensions;
 using SolutionNamePlaceholder.Presentation.Extensions;
 using SolutionNamePlaceholder.Presentation.Middlewares;
 using Serilog;
+using SolutionNamePlaceholder.Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,10 @@ if (shouldShowSwagger)
 }
 
 app.UseHttpsRedirection();
+
+app.MapGroup("api/identity")
+    .WithTags("Identity")
+    .MapIdentityApi<ContaUsuario>();
 
 app.UseAuthorization();
 
