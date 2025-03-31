@@ -18,32 +18,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseMiddleware<ErrorHandlingMiddleware>();
-app.UseSerilogRequestLogging();
-
-// Defina se você quer usar o swagger UI ou não.
-var shouldShowSwagger = true; // app.Environment.IsDevelopment()
-if (shouldShowSwagger)
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
-        c.DocumentTitle = $"{app.Environment.ApplicationName} - Swagger";
-        c.DisplayRequestDuration();
-        c.EnableDeepLinking(); 
-        c.DefaultModelsExpandDepth(-1);
-    });
-}
-
-app.UseHttpsRedirection();
-
-app.MapGroup("api/identity")
-    .WithTags("Identity")
-    .MapIdentityApi<ContaUsuario>();
-
-app.UseAuthorization();
-
-app.MapControllers();
+app.AddPresentation();
+app.AddInfrastructure();
 
 app.Run();
