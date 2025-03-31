@@ -18,7 +18,7 @@ namespace SolutionNamePlaceholder.Application.Common
         {
             Itens = itens;
             QuantidadeTotalItens = quantidadeTotal;
-            TotalPaginas = (int)Math.Ceiling((double)quantidadeTotal)/tamanhoPagina);
+            TotalPaginas = (int)Math.Ceiling(((double)quantidadeTotal)/tamanhoPagina);
             ItensDe = tamanhoPagina * (numeroPagina - 1) + 1;
             ItensAte = ItensDe + (tamanhoPagina - 1);
         }

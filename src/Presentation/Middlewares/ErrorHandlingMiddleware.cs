@@ -13,7 +13,7 @@ namespace SolutionNamePlaceholder.Presentation.Middlewares
             }
             catch (CustomException ex)
             {
-                context.Response.StatusCode = ex.StatusCode;
+                context.Response.StatusCode = (int)ex.StatusCode;
                 await context.Response.WriteAsync(ex.Message);
                 logger.LogWarning("{@ex}", ex);
             }

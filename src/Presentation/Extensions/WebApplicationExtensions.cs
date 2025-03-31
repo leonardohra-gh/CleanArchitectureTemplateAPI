@@ -29,10 +29,6 @@ namespace SolutionNamePlaceholder.Presentation.Extensions
 
             app.UseHttpsRedirection();
 
-            app.MapGroup("api/identity")
-                .WithTags("Identity")
-                .MapIdentityApi<ContaUsuario>();
-
             app.UseAuthorization();
 
             app.MapControllers();

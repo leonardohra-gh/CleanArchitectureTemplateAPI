@@ -10,3 +10,7 @@ dotnet new install path/to/Template
 
 Para rodar o template:
 dotnet new clean-arch-api --ProjectName NomeDoProjeto -n NomeDoProjeto
+
+Depois, com o projeto criado, ir para o src/Infrastructure e rodar os comandos:
+dotnet ef migrations add InitialCreate --startup-project ..\Presentation\
+dotnet ef database update --startup-project ..\Presentation\
