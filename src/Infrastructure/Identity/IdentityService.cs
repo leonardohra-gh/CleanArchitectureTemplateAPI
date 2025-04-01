@@ -29,7 +29,7 @@ namespace SolutionNamePlaceholder.Infrastructure.Identity
         {
             var user = await userManager.FindByEmailAsync(email) ??
                 throw new RecursoNaoEncontradoException(nameof(ContaUsuario), email);
-            var role = await roleManager.FindByNameAsync(roleName) ??
+            var role = await roleManager.FindByNameAsync(roleName.ToUpper()) ??
                 throw new RecursoNaoEncontradoException(nameof(IdentityRole), roleName);
 
             await userManager.RemoveFromRoleAsync(user, role.Name!);

@@ -11,6 +11,9 @@ namespace SolutionNamePlaceholder.Presentation.Controllers
         /// <summary>
         /// Retorna a versão atual da API
         /// </summary>
+        /// <remarks>
+        /// Retorna a versão atual da API, no formato Major.Minor.Patch
+        /// </remarks>
         /// <response code="200">Retorna o valor atual da versão</response>
         [HttpGet]
         [ProducesResponseType(typeof(VersaoDTO), 200)]
