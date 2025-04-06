@@ -1,0 +1,20 @@
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    user: root
+    environment: 
+      - MSSQL_ENCRYPT=0
+    volumes:
+      - ./https/devCA.crt:/tmp/devCA.crt
+    command: [
+      "sh", "-c",
+      "cp /tmp/devCA.crt /usr/local/share/ca-certificates/ && update-ca-certificates && /opt/mssql/bin/sqlservr"
+    ]
+  api:
+    volumes:
+      - ./https/devCA.crt:/usr/local/share/ca-certificates/devCA.crt
+    command: [
+      "sh", "-c",
+      "update-ca-certificates && dotnet SolutionNamePlaceholder.Presentation.dll"
+    ]
+    

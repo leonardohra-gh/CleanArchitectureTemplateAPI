@@ -20,7 +20,7 @@ namespace SolutionNamePlaceholder.Infrastructure.Extensions
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("Database");
+            var connectionString = configuration.GetConnectionString("SolutionNamePlaceholderBD");
             services.AddDbContext<ContextoBD>(
                 options => options.UseSqlServer(connectionString)
                 //.EnableSensitiveDataLogging()

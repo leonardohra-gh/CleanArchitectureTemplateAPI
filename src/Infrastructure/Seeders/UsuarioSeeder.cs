@@ -30,7 +30,7 @@ namespace SolutionNamePlaceholder.Infrastructure.Seeders
         private static List<ContaUsuario> RetornarUsuarios()
         {
             List<ContaUsuario> usuarios = [
-                new() { UserName = "admin", Email = "admin@test.com"},
+                new() { UserName = "admin@test.com", Email = "admin@test.com", EmailConfirmed = true},
             ];
 
             return usuarios;

@@ -1,0 +1,50 @@
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    # user: mssql
+    environment: 
+      - ACCEPT_EULA=Y
+      - MSSQL_ENCRYPT=1
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+      - MSSQL_TLS_CERTIFICATE=/https/sql-server.pem
+      - MSSQL_TLS_PRIVATE_KEY=/https/sql-server.pem
+      - MSSQL_PID=Express
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P $${MSSQL_SA_PASSWORD} -d master -Q 'SELECT 1' -N"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql-data:/var/opt/mssql
+      - ./https/sql-server:/https:ro
+    networks:
+      - backend-network
+  api:
+    depends_on:
+      sql-server:
+        condition: service_healthy
+    user: "1000:1000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9019:80"
+      - "9029:443"
+    environment:
+      ConnectionStrings__SolutionNamePlaceholderBD: "Server=sql-server;Database=SolutionNamePlaceholderBD;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: ${API_CERT_PATH}
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${API_CERT_PASSWORD}
+      ASPNETCORE_URLS: "https://+;http://+"
+    volumes:
+      - ./https/api:/https:ro
+    networks:
+      - backend-network
+
+volumes:
+  sql-data:
+
+networks:
+  backend-network:
+    driver: bridge

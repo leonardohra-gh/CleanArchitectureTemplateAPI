@@ -728,3 +728,7 @@ obj/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,csharp,aspnetcore,dotnetcore
 /https
+*.key
+*.crt
+*.csr
+*.srl

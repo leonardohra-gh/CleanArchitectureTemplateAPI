@@ -14,3 +14,6 @@ dotnet new clean-arch-api-auth --ProjectName NomeDoProjeto -n NomeDoProjeto
 Depois, com o projeto criado, ir para o src/Infrastructure e rodar os comandos:
 dotnet ef migrations add InitialCreate --startup-project ..\Presentation\
 dotnet ef database update --startup-project ..\Presentation\
+
+
+docker-compose -f docker-compose.base.yaml -f docker-compose.dev.yaml up --build

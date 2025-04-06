@@ -1,0 +1,33 @@
+Isso só deve ser usado para ambientes de teste
+Esses comandos vão criar um Certificate Authority, que vai assinar os certificados
+
+openssl genrsa -out devCA.key 4096
+
+Com essa key do CA, vamos poder criar um certificado self-signed
+
+openssl req -x509 -new -nodes -key devCA.key -sha256 -days 3650 -out devCA.crt -subj "/CN=CA local de desenvolvimento"
+
+Esse certificado pode ser adicionado aos certificados confiados, basta seguir as instruções (instalar no Trusted Root Certification Authorities stores)
+
+Agora que temos uma autoridade que o computador confia para assinar os certificados, vamos criar um certificado para o nosso servidor
+Os arquivos api.cnf e sql-server.cnf já tem a configuração inicial, então basta executar os comandos abaixo
+
+openssl req -new -newkey rsa:2048 -nodes -keyout sql-server.key -out sql-server.csr -config sql-server.cnf
+
+openssl req -new -newkey rsa:2048 -nodes -keyout api.key -out api.csr -config api.cnf
+
+Para criar requests para criar certificados. E os comandos abaixo
+
+openssl x509 -req -in sql-server.csr -CA devCA.crt -CAkey devCA.key -CAcreateserial -out sql-server.crt -days 365 -extfile sql-server.cnf -extensions v3_req
+
+openssl x509 -req -in api.csr -CA devCA.crt -CAkey devCA.key -CAcreateserial -out api.crt -days 365 -extfile api.cnf -extensions v3_req
+
+Para criar os certificados, usando o certificado da CA que já é confiável. Por fim:
+
+cat sql-server.key sql-server.crt > ../https/sql-server/sql-server.pem
+
+Vai criar um PEM, juntando o certificado e key para o sql-server e:
+
+openssl pkcs12 -export -out ../https/api.pfx -inkey api.key -in api.crt -certfile devCA.crt -password pass:[SENHA]
+
+Vai criar um PFX, que é outro formato de certificado, que é o que o dotnet api usa, já criando direto na pasta https

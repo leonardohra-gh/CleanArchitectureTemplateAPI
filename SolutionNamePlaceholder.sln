@@ -26,9 +26,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
 		.env = .env
+		.env.sample = .env.sample
 		.gitignore = .gitignore
+		docker-compose.base.yaml = docker-compose.base.yaml
+		docker-compose.dev.yaml = docker-compose.dev.yaml
 		docker-compose.override.yaml = docker-compose.override.yaml
-		docker-compose.yaml = docker-compose.yaml
+		docker-compose.prod.yaml = docker-compose.prod.yaml
 		Dockerfile = Dockerfile
 		README = README
 	EndProjectSection
@@ -38,6 +41,20 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".template.config", ".template.config", "{97A5CF4E-392E-4174-BB57-F96BF31F47C9}"
 	ProjectSection(SolutionItems) = preProject
 		.template.config\template.json = .template.config\template.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{9E08DADA-70A3-4725-9246-F944680319A2}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\api.cnf = scripts\api.cnf
+		scripts\CriarCertificados.txt = scripts\CriarCertificados.txt
+		scripts\sql-server.cnf = scripts\sql-server.cnf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{845260D2-A633-4FD7-A560-13C4635EF062}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{2F442EA1-1B47-4BDF-82EA-4142AB5CDEA0}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
 	EndProjectSection
 EndProject
 Global
@@ -93,6 +110,9 @@ Global
 		{999DF982-B944-47CC-8EB8-FCC8EC45020C} = {4AE48BAC-B2CB-49F9-8B43-59686964DC60}
 		{82649E26-EDAD-47B1-8B8E-9F12ABF1777E} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
 		{97A5CF4E-392E-4174-BB57-F96BF31F47C9} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{9E08DADA-70A3-4725-9246-F944680319A2} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{845260D2-A633-4FD7-A560-13C4635EF062} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{2F442EA1-1B47-4BDF-82EA-4142AB5CDEA0} = {845260D2-A633-4FD7-A560-13C4635EF062}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2C60146-244B-4E2E-B7F6-BDA85B46C3C8}
