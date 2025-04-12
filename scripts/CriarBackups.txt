@@ -1,0 +1,18 @@
+O backup, nesse caso, nada mais é do que pegar o que temos em no container do sql-server em /var/opt/mssql e copiar para algum lugar
+É interessante ter um backup local (no servidor) e outro externo
+
+Caso queira testar o backup local, basta rodar o comando abaixo. Isso só deve ser feito da forma a seguir a critério de teste (ver se o comando está funcionando corretamente, coisas do gênero)
+
+docker run --rm -v solutionnameplaceholder_sql-data:/source -v "${PWD}/backups:/backup" alpine sh -c "tar -czf /backup/sql-data-$(Get-Date -Format "yyyyMMddHHmmss").tar.gz -C /source ."
+
+O comando acima vai rodar um container temporário, que vai pegar o volume onde fica os dados do sql-server e copiar para um diretório local (./backups)
+
+Caso você queira restaurar o backup, precisa parar o container docker atual (docker compose down) e depois rodar o comando de restauração:
+
+docker run --rm -v solutionnameplaceholder_sql-data:/target -v "${PWD}/backups:/backup" alpine sh -c "rm -rf /target/* && tar -xzf /backup/sql-data-0001.tar.gz -C /target"
+
+O comando acima vai rodar um container temporário, que vai pegar o que tem em ./backups e botar dentro do volume onde ficam os dados do sql-server, já extraindo eles. Caso queira escolher o backup a restaurar, mude o nome do arquivo depois de /backup/ para o arquivo de backup que você quiser
+
+
+Porém isso tudo é para rodar apenas em ambiente de desenvolvimento. Ter que rodar esses comandos de backup no servidor toda hora pode acabar sendo passível de erros com frequência, então criei o script backup.sh
+

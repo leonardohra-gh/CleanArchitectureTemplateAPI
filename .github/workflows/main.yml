@@ -23,17 +23,18 @@ jobs:
       - name: Deploy application
         run: |
           ssh -i ~/.ssh/id_rsa ${{secrets.VPS_User}}@${{secrets.VPS_IP}} << 'EOF'
-            TARGET_DIR="~/projects/SolutionNamePlaceholder"
+            TARGET_DIR="$HOME/projects/SolutionNamePlaceholder"
 
             if [ -d "$TARGET_DIR" ]; then
               cd "$TARGET_DIR"
               git pull origin live
+              docker compose down
             else
-              git clone -b live https://github.com/${{ env.REPO_NAME }}.git "$TARGET_DIR"
+              mkdir -p "$HOME/projects"
+              git clone -b live your-user:your-user/SolutionNamePlaceholder.git $TARGET_DIR
               cd "$TARGET_DIR"
             fi
-
-            docker-compose down
+            
             docker-compose build
             docker-compose up -d 
           EOF

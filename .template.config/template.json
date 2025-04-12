@@ -31,5 +31,14 @@
       "fileRename": "SolutionNamePlaceholder",
       "description": "The root namespace/project name"
     }
+  },
+  "SafeProjectName": {
+    "type": "generated",
+    "generated": "casing",
+    "parameters": {
+      "source": "ProjectName",
+      "toLower": "true"
+    },
+    "replaces":  "solutionnameplaceholder"
   }
 }

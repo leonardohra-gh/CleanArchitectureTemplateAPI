@@ -6,7 +6,7 @@ Coisas necessárias para alterar:
 
 
 Para instalar o template:
-dotnet new install path/to/Template
+dotnet new install ./
 
 Para rodar o template:
 dotnet new clean-arch-api-auth --ProjectName NomeDoProjeto -n NomeDoProjeto
@@ -17,3 +17,12 @@ dotnet ef database update --startup-project ..\Presentation\
 
 
 docker-compose -f docker-compose.base.yaml -f docker-compose.dev.yaml up --build
+
+
+ssh-keygen -t rsa -b 4096 -f ./ssh/github_action_key -N ""
+
+
+No repositório, ir em Settings, "Secrets and Actions" e criar 3 secrets, com os seguintes nomes e valores:
+VPS_IP: {Ip da VPS do servidor}
+VPS_User: {Usuário do servidor}
+Private_Key: {Chave privada do servidor}

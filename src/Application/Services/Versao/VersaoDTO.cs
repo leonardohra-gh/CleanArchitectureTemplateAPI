@@ -8,6 +8,6 @@ namespace SolutionNamePlaceholder.Application.Services.Versao
 {
     public class VersaoDTO
     {
-        public string Versao { get; set; }
+        public string Versao { get; set; } = default!;
     }
 }
