@@ -46,8 +46,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{9E08
 		scripts\api.cnf = scripts\api.cnf
 		scripts\backup.sh = scripts\backup.sh
 		scripts\CriarBackups.txt = scripts\CriarBackups.txt
-		scripts\CriarCertificados.txt = scripts\CriarCertificados.txt
+		scripts\CriarCertificadosProd.txt = scripts\CriarCertificadosProd.txt
 		scripts\sql-server.cnf = scripts\sql-server.cnf
+		scripts\CriarCertificadosDev.txt = scripts\CriarCertificadosDev.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{845260D2-A633-4FD7-A560-13C4635EF062}"

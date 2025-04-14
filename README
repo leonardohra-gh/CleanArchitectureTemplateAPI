@@ -3,7 +3,9 @@ Coisas necessárias para alterar:
 - A connectionString em appsettings
 - O nome da connectionString o Infrastructure/Extensions/AddInsfrastructure
 - Em Presentation/WebApplicationBuilderExtensions.cs toda a parte do SwaggerDoc
+- A porta da api e do sql server no .env
 
+É interessante também adicionar o .env ao gitignore, para ele não ir pro github
 
 Para instalar o template:
 dotnet new install ./
@@ -15,14 +17,24 @@ Depois, com o projeto criado, ir para o src/Infrastructure e rodar os comandos:
 dotnet ef migrations add InitialCreate --startup-project ..\Presentation\
 dotnet ef database update --startup-project ..\Presentation\
 
+Caso queira testar com docker, é necessário criar os certificados de desenvolvimento (scripts/CriarCertificadosDev.txt) e rodar o comando abaixo:
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build
 
-docker-compose -f docker-compose.base.yaml -f docker-compose.dev.yaml up --build
-
-
+Para fazer o deploy automatizado, é necessário criar a private key:
 ssh-keygen -t rsa -b 4096 -f ./ssh/github_action_key -N ""
 
+Com isso temos um par de chaves (privada e pública). O conteúdo da chave pública deve ser adicionada ao servidor no caminho "/.ssh/authorized_keys", ao fim do arquivo 
+Já a chave privada será usada mais abaixo.
 
 No repositório, ir em Settings, "Secrets and Actions" e criar 3 secrets, com os seguintes nomes e valores:
 VPS_IP: {Ip da VPS do servidor}
 VPS_User: {Usuário do servidor}
-Private_Key: {Chave privada do servidor}
+Private_Key: {Conteúdo escrito na chave privada}
+
+Com isso, temos o deploy preparado, mas ainda sem funcionar. Agora, precisamos botar ele no github e criar um branch "live".
+
+Quando você criar o branch live, ele vai dar deploy automaticamente, se você tirou o .env do gitignore, agora será necessário criar o arquivo ".env" no servidor, usando o .env.sample como base
+Depois, criar os certificados de Produção (scripts/CriarCertificadosProd.txt) e rodar o comando (na raiz do projeto):
+docker compose up --build -d
+ou dar push em alguma coisa pro branch live.
+Sugiro depois de dar push em live, sempre voltar pro ouro branch e adicionar lembrar de mudar a versão do projeto em Presentation.csproj antes de dar push em live

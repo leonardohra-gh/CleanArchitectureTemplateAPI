@@ -1,0 +1,14 @@
+Todos os comandos abaixo devem ser executados no servidor de produção, na pasta raiz do projeto
+Considerando que você já instalou letsencrypt e já tem os certificados funcionando, para criar os certificados de produção para as aplicações, basta rodar:
+sudo cp /etc/letsencrypt/live/{seu_dominio}/fullchain.pem ./https/sql-server/sql-server.crt
+sudo cp /etc/letsencrypt/live/{seu_dominio}/privkey.pem ./https/sql-server/sql-server.key
+
+O comando acima criará pegará os arquivos para o sql-server
+
+Depois, para criar o de produção para a API, basta rodar:
+sudo openssl pkcs12 -export -out ./https/api/api.pfx -inkey /etc/letsencrypt/live/{seu_dominio}/privkey.pem -in /etc/letsencrypt/live/{seu_dominio}/cert.pem -certfile /etc/letsencrypt/live/{seu_dominio}/chain.pem
+
+Aqui você precisará adicionar uma senha, essa senha deverá ser a mesma em .env
+
+Por fim, dê a permissão de leitura em ./https para todos os usuários:
+sudo chmod -R 755 ./https
