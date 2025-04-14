@@ -732,3 +732,4 @@ obj/
 *.crt
 *.csr
 *.srl
+/.env

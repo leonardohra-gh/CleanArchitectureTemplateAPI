@@ -4,6 +4,7 @@ Coisas necessárias para alterar:
 - O nome da connectionString o Infrastructure/Extensions/AddInsfrastructure
 - Em Presentation/WebApplicationBuilderExtensions.cs toda a parte do SwaggerDoc
 - A porta da api e do sql server no .env
+- Licença (LICENSE.txt)
 
 É interessante também adicionar o .env ao gitignore, para ele não ir pro github
 
